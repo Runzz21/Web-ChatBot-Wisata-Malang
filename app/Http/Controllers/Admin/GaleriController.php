@@ -26,13 +26,21 @@ class GaleriController extends Controller
     {
         $request->validate([
             'foto' => ['required', 'array'],
-            'foto.*' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'foto.*' => ['required', 'image', 'mimes:jpeg,png,jpg,webp', 'max:10240'],
+        ]);
+
+        \Log::debug('Galeri store reached', [
+            'destinasi_id' => $destinasi->id_destinasi,
+            'files_count' => count($request->file('foto')),
+            'files' => array_map(fn($f) => $f->getClientOriginalName(), $request->file('foto')),
         ]);
 
         $this->galeriService->storeImages(
             $destinasi->id_destinasi,
             $request->file('foto')
         );
+
+        \Log::debug('Galeri store completed');
 
         return redirect()->route('admin.galeri.index', $destinasi->id_destinasi)
             ->with('success', 'Foto berhasil ditambahkan.');

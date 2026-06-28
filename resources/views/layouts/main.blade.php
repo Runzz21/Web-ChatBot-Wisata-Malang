@@ -12,11 +12,11 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
     <link rel="canonical" href="{{ url()->current() }}">
-    <link rel="icon" type="image/svg+xml" href="https://laravel.com/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌿%3C/text%3E%3C/svg%3E">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
-<body class="bg-gray-50">
+<body class="bg-cream-50 text-forest-800 antialiased">
     @include('components.navbar')
 
     <main>
@@ -36,6 +36,9 @@
                     text: '{{ session('success') }}',
                     timer: 3000,
                     showConfirmButton: false,
+                    background: '#F5F0E8',
+                    color: '#152A23',
+                    confirmButtonColor: '#2D4A3E',
                 });
             @endif
 
@@ -44,7 +47,9 @@
                     icon: 'error',
                     title: 'Gagal!',
                     text: '{{ session('error') }}',
-                    confirmButtonColor: '#dc2626',
+                    background: '#F5F0E8',
+                    color: '#152A23',
+                    confirmButtonColor: '#2D4A3E',
                 });
             @endif
         });
