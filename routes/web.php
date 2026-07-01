@@ -38,6 +38,7 @@ Route::get('/sitemap.xml', function () {
 
 Route::prefix('chatbot')->name('chatbot.')->group(function () {
     Route::get('/', [ChatbotController::class, 'index'])->name('index');
+    Route::post('/chat', [ChatbotController::class, 'chat'])->name('chat')->middleware('throttle:chatbot');
     Route::post('/process', [ChatbotController::class, 'process'])->name('process')->middleware('throttle:chatbot');
     Route::post('/final', [ChatbotController::class, 'processFinal'])->name('final')->middleware('throttle:chatbot');
 });

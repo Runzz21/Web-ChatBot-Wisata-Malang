@@ -10,6 +10,7 @@ use App\Services\ChabotService;
 use App\Services\ChatbotLogService;
 use App\Services\DestinasiService;
 use App\Services\GaleriService;
+use App\Services\GeminiService;
 use App\Services\KategoriService;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
@@ -27,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(DestinasiService::class);
         $this->app->singleton(GaleriService::class);
         $this->app->singleton(ChatbotLogService::class);
+        $this->app->singleton(GeminiService::class);
         $this->app->singleton(ChabotService::class);
     }
 

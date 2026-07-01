@@ -136,6 +136,20 @@ class DestinasiRepository
         return $query->inRandomOrder()->limit($limit)->get();
     }
 
+    public function getAllForContext(): string
+    {
+        $destinasi = Destinasi::aktif()
+            ->with('kategori')
+            ->orderBy('nama')
+            ->get();
+
+        return $destinasi->map(function ($d) {
+            $harga = $d->harga_tiket > 0 ? 'Rp ' . number_format($d->harga_tiket, 0, ',', '.') : 'Gratis';
+            $kategori = $d->kategori->nama_kategori ?? '-';
+            return "- {$d->nama} | Kategori: {$kategori} | Lokasi: {$d->lokasi} | Jarak: {$d->jarak_km} km | Harga: {$harga} | Deskripsi: {$d->deskripsi}";
+        })->implode("\n");
+    }
+
     public function create(array $data): Destinasi
     {
         Cache::forget('destinasi_populer');
