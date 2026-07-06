@@ -17,10 +17,17 @@ class DestinasiController extends Controller
     {
         $kategoriList = $this->kategoriService->getAll();
 
+        $kategoriId = null;
+        if ($request->filled('kategori')) {
+            $kategoriId = is_numeric($request->input('kategori'))
+                ? (int) $request->input('kategori')
+                : $this->kategoriService->findBySlug($request->input('kategori'))?->id_kategori;
+        }
+
         $destinasi = $this->destinasiService->paginate(
             perPage: 12,
             search: $request->input('search'),
-            kategoriId: $request->input('kategori') ? (int) $request->input('kategori') : null,
+            kategoriId: $kategoriId,
             jarak: $request->input('jarak'),
             harga: $request->input('harga'),
             buka24Jam: $request->boolean('buka_24jam') ?: null,
