@@ -44,6 +44,82 @@
         z-index: 2;
         animation: float 3s ease-in-out infinite;
     }
+    .hero-slideshow-item {
+        position: absolute;
+        inset: 0;
+        transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+    }
+    .hero-slideshow-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: saturate(0.9) brightness(0.75);
+    }
+    .hero-slideshow-item .grad-left {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, #0E1D18 0%, transparent 35%);
+        pointer-events: none;
+        z-index: 2;
+    }
+    .hero-slideshow-item .grad-bottom {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, #0E1D18 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 2;
+    }
+    .hero-slideshow-item .grad-right {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to left, #0E1D18 0%, transparent 20%);
+        pointer-events: none;
+        z-index: 2;
+    }
+    .hero-slideshow-item .caption {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 3;
+        text-align: right;
+    }
+    .hero-slideshow-dots {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        display: flex;
+        gap: 0.5rem;
+    }
+    .hero-slideshow-dots button {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: rgba(245, 240, 232, 0.25);
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .hero-slideshow-dots button.active {
+        background: #C9A84C;
+        width: 1.25rem;
+        border-radius: 0.25rem;
+    }
+    .hero-image-stack {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-height: 500px;
+        border-radius: 1.5rem;
+        overflow: hidden;
+    }
+    @media (max-width: 1023px) {
+        .hero-image-stack {
+            min-height: 350px;
+        }
+    }
     .stat-divider {
         width: 1px;
         height: 3rem;
@@ -89,37 +165,64 @@
     {{-- Hero Section --}}
     <section class="hero-section">
         <div class="hero-particles" style="position:absolute;inset:0;z-index:1;"></div>
-        <img src="{{ asset('images/hero-bg.jpg') }}"
-             alt="Keindahan Alam Malang"
-             class="hero-bg-img"
-             onerror="this.style.display='none'">
         <div class="hero-content w-full">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
-                <div class="max-w-3xl">
-                    <div class="reveal-fade">
-                        <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase mb-6"
-                              style="background: rgba(201, 168, 76, 0.15); color: #C9A84C; border: 1px solid rgba(201, 168, 76, 0.2);">
-                            Jelajahi Keindahan
-                        </span>
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div class="max-w-xl">
+                        <div class="reveal-fade">
+                            <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase mb-6"
+                                  style="background: rgba(201, 168, 76, 0.15); color: #C9A84C; border: 1px solid rgba(201, 168, 76, 0.2);">
+                                Jelajahi Keindahan
+                            </span>
+                        </div>
+                        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-white leading-[1.08] tracking-tight mb-6 reveal" style="transition-delay: 0.1s">
+                            Alam Malang<br>
+                            <span class="text-gold-500 text-glow">Menantimu</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl text-white/60 leading-relaxed mb-10 max-w-xl reveal" style="transition-delay: 0.2s">
+                            Temukan berbagai destinasi wisata alam terbaik di Malang Raya. Dari pegunungan yang menakjubkan hingga air terjun yang mempesona.
+                        </p>
+                        <div class="flex flex-wrap gap-4 reveal" style="transition-delay: 0.3s">
+                            <a href="{{ route('destinasi.index') }}"
+                               class="btn-primary group text-base">
+                                Jelajahi Destinasi
+                                <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                            </a>
+                            <a href="{{ route('chatbot.index') }}"
+                               class="btn-glass group text-base">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+                                Dapatkan Rekomendasi
+                            </a>
+                        </div>
                     </div>
-                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-white leading-[1.08] tracking-tight mb-6 reveal" style="transition-delay: 0.1s">
-                        Alam Malang<br>
-                        <span class="text-gold-500 text-glow">Menantimu</span>
-                    </h1>
-                    <p class="text-lg sm:text-xl text-white/60 leading-relaxed mb-10 max-w-xl reveal" style="transition-delay: 0.2s">
-                        Temukan berbagai destinasi wisata alam terbaik di Malang Raya. Dari pegunungan yang menakjubkan hingga air terjun yang mempesona.
-                    </p>
-                    <div class="flex flex-wrap gap-4 reveal" style="transition-delay: 0.3s">
-                        <a href="{{ route('destinasi.index') }}"
-                           class="btn-primary group text-base">
-                            Jelajahi Destinasi
-                            <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-                        </a>
-                        <a href="{{ route('chatbot.index') }}"
-                           class="btn-glass group text-base">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
-                            Dapatkan Rekomendasi
-                        </a>
+                    <div class="hidden lg:block reveal" style="transition-delay: 0.15s">
+                        @php
+                            $slideDestinasi = $destinasiPopuler->filter(fn($d) => $d->foto_url)->take(6);
+                        @endphp
+                        @if($slideDestinasi->count())
+                        <div class="hero-image-stack" id="heroSlideshow">
+                            @foreach($slideDestinasi as $item)
+                            <div class="hero-slideshow-item {{ $loop->first ? 'opacity-100' : 'opacity-0' }}"
+                                 data-index="{{ $loop->index }}">
+                                <img src="{{ $item->foto_url }}"
+                                     alt="{{ $item->nama }}"
+                                     loading="{{ $loop->first ? 'eager' : 'lazy' }}">
+                                <div class="grad-left"></div>
+                                <div class="grad-bottom"></div>
+                                <div class="grad-right"></div>
+                                <div class="caption">
+                                    <p class="text-white/80 text-sm font-medium tracking-wide drop-shadow-lg">{{ $item->nama }}</p>
+                                    <p class="text-white/40 text-xs mt-0.5 drop-shadow-lg">{{ $item->lokasi }}</p>
+                                </div>
+                            </div>
+                            @endforeach
+                            <div class="hero-slideshow-dots">
+                                @foreach($slideDestinasi as $item)
+                                <button type="button" class="{{ $loop->first ? 'active' : '' }}" data-slide="{{ $loop->index }}"></button>
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -284,4 +387,50 @@
             </div>
         </div>
     </section>
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('heroSlideshow');
+    if (!container) return;
+
+    const items = container.querySelectorAll('.hero-slideshow-item');
+    const dots = container.querySelectorAll('.hero-slideshow-dots button');
+    let current = 0;
+    const total = items.length;
+    if (total < 2) return;
+
+    function showSlide(index) {
+        items.forEach((el, i) => {
+            el.style.opacity = i === index ? '1' : '0';
+            el.style.transform = i === index ? 'scale(1)' : 'scale(1.02)';
+        });
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+        current = index;
+    }
+
+    let interval = setInterval(() => {
+        showSlide((current + 1) % total);
+    }, 4500);
+
+    dots.forEach((dot) => {
+        dot.addEventListener('click', function() {
+            clearInterval(interval);
+            showSlide(parseInt(this.dataset.slide));
+            interval = setInterval(() => {
+                showSlide((current + 1) % total);
+            }, 4500);
+        });
+    });
+
+    container.addEventListener('mouseenter', () => clearInterval(interval));
+    container.addEventListener('mouseleave', () => {
+        interval = setInterval(() => {
+            showSlide((current + 1) % total);
+        }, 4500);
+    });
+});
+</script>
+@endpush
 @endsection
