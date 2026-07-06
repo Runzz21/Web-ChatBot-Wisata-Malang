@@ -30,6 +30,8 @@ class Destinasi extends Model
         'foto_utama',
         'fasilitas',
         'status_aktif',
+        'latitude',
+        'longitude',
     ];
 
     protected $casts = [

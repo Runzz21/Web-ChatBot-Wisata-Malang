@@ -3,33 +3,37 @@
      class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-18 items-center">
-            <a href="{{ route('home') }}" class="flex items-center space-x-2.5 group">
-                <div class="w-9 h-9 rounded-lg bg-forest-600 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                    <svg class="w-5 h-5 text-cream-50" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <a href="{{ route('home') }}" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-leaf-600/10 flex items-center justify-center transition-all duration-300 group-hover:bg-leaf-600/20 group-hover:scale-105">
+                    <svg class="w-5 h-5 text-leaf-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 </div>
-                <span class="font-display font-bold text-lg text-forest-800 tracking-tight">Wisata<span class="text-gold-500">Malang</span></span>
+                <span class="font-display font-bold text-xl text-ink tracking-tight">Wisata<span class="text-gold-500">Malang</span></span>
             </a>
 
             <div class="hidden md:flex md:items-center md:space-x-1">
-                <a href="{{ route('home') }}" class="relative px-4 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('home') ? 'text-forest-600' : 'text-forest-700/70 hover:text-forest-600' }} transition-colors duration-300 link-underline">
-                    Beranda
+                @php
+                    $navItems = [
+                        ['route' => 'home', 'label' => 'Beranda'],
+                        ['route' => 'destinasi.*', 'label' => 'Destinasi'],
+                        ['route' => 'chatbot.*', 'label' => 'Rekomendasi'],
+                        ['route' => 'tentang', 'label' => 'Tentang'],
+                        ['route' => 'kontak', 'label' => 'Kontak'],
+                    ];
+                @endphp
+                @foreach($navItems as $item)
+                <a href="{{ route(str_replace('.*', '.index', $item['route'])) }}"
+                   class="relative px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300 link-underline
+                   {{ request()->routeIs($item['route']) ? 'text-leaf-600' : 'text-ink/70 hover:text-leaf-600' }}">
+                    {{ $item['label'] }}
+                    @if(request()->routeIs($item['route']))
+                    <span class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-gold-500"></span>
+                    @endif
                 </a>
-                <a href="{{ route('destinasi.index') }}" class="relative px-4 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('destinasi.*') ? 'text-forest-600' : 'text-forest-700/70 hover:text-forest-600' }} transition-colors duration-300 link-underline">
-                    Destinasi
-                </a>
-                <a href="{{ route('chatbot.index') }}" class="relative px-4 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('chatbot.*') ? 'text-forest-600' : 'text-forest-700/70 hover:text-forest-600' }} transition-colors duration-300 link-underline">
-                    Rekomendasi
-                </a>
-                <a href="{{ route('tentang') }}" class="relative px-4 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('tentang') ? 'text-forest-600' : 'text-forest-700/70 hover:text-forest-600' }} transition-colors duration-300 link-underline">
-                    Tentang
-                </a>
-                <a href="{{ route('kontak') }}" class="relative px-4 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('kontak') ? 'text-forest-600' : 'text-forest-700/70 hover:text-forest-600' }} transition-colors duration-300 link-underline">
-                    Kontak
-                </a>
+                @endforeach
             </div>
 
             <div class="md:hidden flex items-center">
-                <button @click="mobileOpen = !mobileOpen" class="p-2.5 rounded-lg text-forest-600 hover:bg-forest-600/5 transition-colors">
+                <button @click="mobileOpen = !mobileOpen" class="p-2.5 rounded-xl text-ink hover:bg-leaf-600/5 transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path :class="{'hidden': mobileOpen, 'block': !mobileOpen}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         <path :class="{'block': mobileOpen, 'hidden': !mobileOpen}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -39,13 +43,24 @@
         </div>
     </div>
 
-    <div x-show="mobileOpen" class="md:hidden border-t border-forest-600/10 bg-cream-50/95 backdrop-blur-lg" x-cloak>
-        <div class="px-4 py-4 space-y-1">
-            <a href="{{ route('home') }}" class="block px-4 py-2.5 rounded-lg text-sm {{ request()->routeIs('home') ? 'text-forest-600 bg-forest-600/5 font-semibold' : 'text-forest-700/70 hover:bg-forest-600/5' }} transition-colors">Beranda</a>
-            <a href="{{ route('destinasi.index') }}" class="block px-4 py-2.5 rounded-lg text-sm {{ request()->routeIs('destinasi.*') ? 'text-forest-600 bg-forest-600/5 font-semibold' : 'text-forest-700/70 hover:bg-forest-600/5' }} transition-colors">Destinasi</a>
-            <a href="{{ route('chatbot.index') }}" class="block px-4 py-2.5 rounded-lg text-sm {{ request()->routeIs('chatbot.*') ? 'text-forest-600 bg-forest-600/5 font-semibold' : 'text-forest-700/70 hover:bg-forest-600/5' }} transition-colors">Rekomendasi</a>
-            <a href="{{ route('tentang') }}" class="block px-4 py-2.5 rounded-lg text-sm {{ request()->routeIs('tentang') ? 'text-forest-600 bg-forest-600/5 font-semibold' : 'text-forest-700/70 hover:bg-forest-600/5' }} transition-colors">Tentang</a>
-            <a href="{{ route('kontak') }}" class="block px-4 py-2.5 rounded-lg text-sm {{ request()->routeIs('kontak') ? 'text-forest-600 bg-forest-600/5 font-semibold' : 'text-forest-700/70 hover:bg-forest-600/5' }} transition-colors">Kontak</a>
+    <div x-show="mobileOpen"
+         class="md:hidden fixed inset-0 top-18 z-40 bg-canvas/95 backdrop-blur-xl"
+         x-cloak
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0">
+        <div class="px-6 py-8 space-y-2">
+            @foreach($navItems as $item)
+            <a href="{{ route(str_replace('.*', '.index', $item['route'])) }}"
+               @click="mobileOpen = false"
+               class="block px-4 py-4 rounded-xl text-base font-medium transition-colors
+               {{ request()->routeIs($item['route']) ? 'text-leaf-600 bg-leaf-600/5 font-semibold border-l-2 border-gold-500' : 'text-ink/70 hover:bg-leaf-600/5 hover:text-leaf-600' }}">
+                {{ $item['label'] }}
+            </a>
+            @endforeach
         </div>
     </div>
 </nav>

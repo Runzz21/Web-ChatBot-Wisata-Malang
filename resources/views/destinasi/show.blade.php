@@ -34,13 +34,14 @@
         text-align: center;
         padding: 1.25rem;
         border-radius: 1rem;
-        background: rgba(45, 74, 62, 0.03);
-        border: 1px solid rgba(45, 74, 62, 0.06);
+        background: rgba(14, 29, 24, 0.03);
+        border: 1px solid rgba(14, 29, 24, 0.06);
         transition: all 0.3s ease;
     }
     .info-stat:hover {
-        background: rgba(45, 74, 62, 0.06);
-        border-color: rgba(45, 74, 62, 0.1);
+        background: rgba(14, 29, 24, 0.06);
+        border-color: rgba(14, 29, 24, 0.1);
+        transform: translateY(-2px);
     }
     .galeri-item {
         transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -67,7 +68,7 @@
                     </span>
                     @endif
                     <h1 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight tracking-tight">{{ $destinasi->nama }}</h1>
-                    <div class="flex flex-wrap items-center gap-4 mt-4 text-cream-50/60 text-sm">
+                    <div class="flex flex-wrap items-center gap-4 mt-4 text-white/60 text-sm">
                         <span class="flex items-center">
                             <svg class="w-4 h-4 mr-1.5 text-gold-500/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                             {{ $destinasi->lokasi }}
@@ -94,26 +95,26 @@
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 reveal">
                         @if($destinasi->ketinggian_mdpl)
                         <div class="info-stat">
-                            <svg class="w-5 h-5 text-forest-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                            <p class="text-xl font-display font-bold text-forest-800">{{ number_format($destinasi->ketinggian_mdpl, 0, ',', '.') }}</p>
-                            <p class="text-[0.6875rem] text-forest-700/40 font-medium uppercase tracking-wider mt-0.5">MDPL</p>
+                            <svg class="w-5 h-5 text-leaf-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                            <p class="text-xl font-display font-bold text-ink">{{ number_format($destinasi->ketinggian_mdpl, 0, ',', '.') }}</p>
+                            <p class="text-[0.6875rem] text-ink/40 font-medium uppercase tracking-wider mt-0.5">MDPL</p>
                         </div>
                         @endif
                         @if($destinasi->jarak_km)
                         <div class="info-stat">
-                            <svg class="w-5 h-5 text-forest-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                            <p class="text-xl font-display font-bold text-forest-800">{{ $destinasi->formatted_jarak ?? ($destinasi->jarak_km . ' km') }}</p>
-                            <p class="text-[0.6875rem] text-forest-700/40 font-medium uppercase tracking-wider mt-0.5">Jarak</p>
+                            <svg class="w-5 h-5 text-leaf-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                            <p class="text-xl font-display font-bold text-ink">{{ $destinasi->formatted_jarak ?? ($destinasi->jarak_km . ' km') }}</p>
+                            <p class="text-[0.6875rem] text-ink/40 font-medium uppercase tracking-wider mt-0.5">Jarak</p>
                         </div>
                         @endif
                         <div class="info-stat">
-                            <svg class="w-5 h-5 text-forest-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            <p class="text-xl font-display font-bold text-forest-800">{{ $destinasi->formatted_harga ?? 'Gratis' }}</p>
-                            <p class="text-[0.6875rem] text-forest-700/40 font-medium uppercase tracking-wider mt-0.5">Harga Tiket</p>
+                            <svg class="w-5 h-5 text-leaf-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <p class="text-xl font-display font-bold text-ink">{{ $destinasi->formatted_harga ?? 'Gratis' }}</p>
+                            <p class="text-[0.6875rem] text-ink/40 font-medium uppercase tracking-wider mt-0.5">Harga Tiket</p>
                         </div>
                         <div class="info-stat">
-                            <svg class="w-5 h-5 text-forest-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            <p class="text-xl font-display font-bold text-forest-800">
+                            <svg class="w-5 h-5 text-leaf-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <p class="text-xl font-display font-bold text-ink">
                                 @if($destinasi->buka_24jam)
                                     24 Jam
                                 @elseif($destinasi->jam_buka && $destinasi->jam_tutup)
@@ -122,7 +123,7 @@
                                     -
                                 @endif
                             </p>
-                            <p class="text-[0.6875rem] text-forest-700/40 font-medium uppercase tracking-wider mt-0.5">Jam Buka</p>
+                            <p class="text-[0.6875rem] text-ink/40 font-medium uppercase tracking-wider mt-0.5">Jam Buka</p>
                         </div>
                     </div>
 
@@ -130,11 +131,11 @@
                     <div class="card-glass p-5 reveal" style="transition-delay: 0.1s">
                         <div class="flex items-center space-x-3">
                             <div class="w-2.5 h-2.5 rounded-full {{ ($destinasi->status_buka === 'Buka' || $destinasi->status_buka === 'Buka 24 Jam') ? 'bg-green-500' : 'bg-red-400' }}"></div>
-                            <span class="font-medium text-forest-700">
+                            <span class="font-medium text-leaf-700">
                                 {{ ($destinasi->status_buka === 'Buka' || $destinasi->status_buka === 'Buka 24 Jam') ? 'Sedang Buka' : 'Sedang Tutup' }}
                             </span>
                             @if(!$destinasi->buka_24jam && $destinasi->jam_buka && $destinasi->jam_tutup)
-                            <span class="text-sm text-forest-700/40">
+                            <span class="text-sm text-ink/40">
                                 ({{ \Carbon\Carbon::parse($destinasi->jam_buka)->format('H:i') }} - {{ \Carbon\Carbon::parse($destinasi->jam_tutup)->format('H:i') }})
                             </span>
                             @endif
@@ -143,8 +144,8 @@
 
                     {{-- Deskripsi --}}
                     <div class="reveal" style="transition-delay: 0.15s">
-                        <h2 class="text-xl font-display font-bold text-forest-800 mb-4">Deskripsi</h2>
-                        <div class="prose prose-sm max-w-none text-forest-700/70 leading-relaxed">
+                        <h2 class="text-xl font-display font-bold text-ink mb-4">Deskripsi</h2>
+                        <div class="prose prose-sm max-w-none text-ink/70 leading-relaxed">
                             {!! nl2br(e($destinasi->deskripsi)) !!}
                         </div>
                     </div>
@@ -152,12 +153,12 @@
                     {{-- Fasilitas --}}
                     @if($destinasi->fasilitas_array && count($destinasi->fasilitas_array))
                     <div class="reveal" style="transition-delay: 0.2s">
-                        <h2 class="text-xl font-display font-bold text-forest-800 mb-4">Fasilitas</h2>
+                        <h2 class="text-xl font-display font-bold text-ink mb-4">Fasilitas</h2>
                         <div class="flex flex-wrap gap-2">
                             @foreach($destinasi->fasilitas_array as $fasilitas)
-                            <span class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium"
+                            <span class="inline-flex items-center px-4 py-2 rounded-xl text-sm font-medium"
                                   style="background: rgba(45, 74, 62, 0.06); color: #2D4A3E;">
-                                <svg class="w-4 h-4 mr-1.5 text-forest-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <svg class="w-4 h-4 mr-1.5 text-leaf-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                                 {{ $fasilitas }}
                             </span>
                             @endforeach
@@ -168,12 +169,12 @@
                     {{-- Galeri --}}
                     @if($destinasi->galeri && count($destinasi->galeri))
                     <div class="reveal" style="transition-delay: 0.25s">
-                        <h2 class="text-xl font-display font-bold text-forest-800 mb-4">Galeri</h2>
+                        <h2 class="text-xl font-display font-bold text-ink mb-4">Galeri</h2>
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                             @foreach($destinasi->galeri as $foto)
                             <a href="{{ $foto->foto_url ?? $foto }}" target="_blank"
                                class="galeri-item block aspect-[4/3] rounded-xl overflow-hidden"
-                               style="border: 1px solid rgba(45, 74, 62, 0.06);">
+                               style="border: 1px solid rgba(14, 29, 24, 0.06);">
                                 <img src="{{ $foto->foto_url ?? $foto }}" alt="Galeri {{ $destinasi->nama }}"
                                      class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                                      loading="lazy">
@@ -186,28 +187,31 @@
 
                 {{-- Sidebar --}}
                 <div class="space-y-6">
-                    {{-- Lokasi Map Card --}}
+                    @php
+                        $q = $destinasi->latitude && $destinasi->longitude
+                            ? "{$destinasi->latitude},{$destinasi->longitude}"
+                            : urlencode($destinasi->lokasi . ', Malang, Jawa Timur');
+                        $mapsUrl = $destinasi->latitude && $destinasi->longitude
+                            ? "https://www.google.com/maps/dir/?api=1&destination={$destinasi->latitude},{$destinasi->longitude}"
+                            : "https://www.google.com/maps/search/" . urlencode($destinasi->lokasi . ', Malang, Jawa Timur');
+                    @endphp
                     <div class="card-glass p-6 lg:sticky lg:top-28 reveal-right">
-                        <h3 class="font-display font-semibold text-forest-700 text-sm uppercase tracking-widest mb-3">Lokasi</h3>
-                        <p class="text-sm text-forest-700/60 mb-4">{{ $destinasi->lokasi }}</p>
-                        @if($destinasi->latitude && $destinasi->longitude)
-                        <div class="aspect-[16/9] rounded-xl overflow-hidden" style="border: 1px solid rgba(45, 74, 62, 0.06);">
+                        <h3 class="font-display font-semibold text-leaf-700 text-sm uppercase tracking-widest mb-3">Lokasi</h3>
+                        <p class="text-sm text-ink/60 mb-4">{{ $destinasi->lokasi }}</p>
+                        <div class="aspect-[16/9] rounded-xl overflow-hidden shadow-card" style="border: 1px solid rgba(14, 29, 24, 0.06);">
                             <iframe
-                                src="https://www.google.com/maps?q={{ $destinasi->latitude }},{{ $destinasi->longitude }}&hl=id&z=15&output=embed"
+                                src="https://www.google.com/maps?q={{ $q }}&hl=id&z=15&output=embed"
                                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
                         </div>
-                        @endif
-                        @if($destinasi->latitude && $destinasi->longitude)
-                        <a href="https://www.google.com/maps/dir/?api=1&destination={{ $destinasi->latitude }},{{ $destinasi->longitude }}"
+                        <a href="{{ $mapsUrl }}"
                            target="_blank"
-                           class="group/btn mt-4 w-full inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300"
-                           style="border: 1px solid rgba(45, 74, 62, 0.12); color: #2D4A3E;">
+                           class="group/btn mt-4 w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300"
+                           style="border: 1px solid rgba(14, 29, 24, 0.12); color: #2D4A3E;">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                             Buka Google Maps
                         </a>
-                        @endif
                     </div>
                 </div>
             </div>
@@ -216,15 +220,15 @@
 
     {{-- Rekomendasi Destinasi Serupa --}}
     @if(isset($rekomendasi) && $rekomendasi->count())
-    <section class="py-16 lg:py-20 bg-cream-50/70">
+    <section class="py-16 lg:py-20 bg-canvas-alt">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-10 reveal">
-                <span class="text-xs font-medium tracking-widest uppercase text-forest-700/40">Rekomendasi</span>
-                <h2 class="text-2xl sm:text-3xl font-display font-bold text-forest-800 mt-2 tracking-tight">Destinasi Serupa</h2>
+                <span class="text-xs font-medium tracking-widest uppercase text-ink/40">Rekomendasi</span>
+                <h2 class="text-2xl sm:text-3xl font-display font-bold text-ink mt-2 tracking-tight">Destinasi Serupa</h2>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 @foreach($rekomendasi as $item)
-                <div class="destination-card card-elevated group">
+                <div class="destination-card card-image group">
                     <div class="relative overflow-hidden aspect-[4/3]">
                         <img src="{{ $item->foto_url }}" alt="{{ $item->nama }}"
                              class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
@@ -237,22 +241,22 @@
                         @endif
                     </div>
                     <div class="p-5">
-                        <h3 class="font-display font-bold text-base text-forest-800 mb-2 group-hover:text-forest-600 transition-colors duration-300">
+                        <h3 class="font-display font-bold text-base text-ink mb-2 group-hover:text-leaf-600 transition-colors duration-300">
                             {{ $item->nama }}
                         </h3>
-                        <div class="space-y-1.5 text-sm text-forest-700/60">
+                        <div class="space-y-1.5 text-sm text-ink/60">
                             <div class="flex items-center">
-                                <svg class="w-4 h-4 mr-1.5 text-forest-700/30 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                <svg class="w-4 h-4 mr-1.5 text-ink/30 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                                 {{ $item->lokasi }}
                             </div>
                             <div class="flex items-center justify-between">
                                 <span>{{ $item->formatted_jarak ?? ($item->jarak_km ? $item->jarak_km . ' km' : '-') }}</span>
-                                <span class="font-semibold text-forest-600">{{ $item->formatted_harga ?? 'Gratis' }}</span>
+                                <span class="font-semibold text-leaf-600">{{ $item->formatted_harga ?? 'Gratis' }}</span>
                             </div>
                         </div>
                         <a href="{{ route('destinasi.show', $item->nama) }}"
-                           class="group/btn mt-3 w-full inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300"
-                           style="border: 1px solid rgba(45, 74, 62, 0.12); color: #2D4A3E;">
+                           class="group/btn mt-3 w-full inline-flex items-center justify-center px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300"
+                           style="border: 1px solid rgba(14, 29, 24, 0.12); color: #2D4A3E;">
                             Lihat Detail
                             <svg class="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
                         </a>
@@ -275,7 +279,7 @@
                 Swal.fire({
                     imageUrl: href,
                     imageAlt: 'Galeri Foto',
-                    background: '#F5F0E8',
+                    background: '#FDFBF7',
                     showConfirmButton: false,
                     width: 'auto',
                     padding: 0,

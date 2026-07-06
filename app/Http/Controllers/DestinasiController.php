@@ -28,6 +28,11 @@ class DestinasiController extends Controller
             sortOrder: $request->input('sort_order')
         );
 
+        if ($request->ajax()) {
+            $html = view('destinasi.partials.grid', compact('destinasi'))->render();
+            return response()->json(['html' => $html]);
+        }
+
         return view('destinasi.index', compact('destinasi', 'kategoriList'));
     }
 

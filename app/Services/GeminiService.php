@@ -65,12 +65,12 @@ class GeminiService
             . "- Jarak: {$preferences['jarak']}\n"
             . "- Anggaran: {$preferences['anggaran']}\n\n"
             . "Berikut destinasi yang cocok:\n{$destinasiText}\n\n"
-            . "Buat kalimat rekomendasi yang ramah dan natural dalam Bahasa Indonesia (boleh campur Jawa/Malangan). "
+            . "Buat kalimat rekomendasi yang ramah dan natural dalam Bahasa Indonesia. "
             . "Jelaskan secara singkat kenapa destinasi ini cocok untuk pengguna.";
 
         return $this->generate($prompt, [
             'role' => 'Asisten Wisata Malang',
-            'tone' => 'ramah, santai, bahasa Jawa campur Indonesia (Ngoko)',
+            'tone' => 'ramah, santai, bahasa Indonesia',
         ]);
     }
 
@@ -86,7 +86,7 @@ class GeminiService
         $messages[] = [
             'role' => 'system',
             'content' => "Kamu adalah Asisten Wisata Malang yang ramah dan membantu. "
-                . "Gunakan bahasa Indonesia santai (boleh campur Jawa/Malangan). "
+                . "Gunakan bahasa Indonesia yang santai dan natural. "
                 . "Berikut adalah data DESTINASI WISATA ALAM di Malang Raya:\n\n"
                 . "{$destinasiContext}\n\n"
                 . "ATURAN:\n"
@@ -118,10 +118,10 @@ class GeminiService
                 'status' => $response->status(),
                 'body' => $response->body(),
             ]);
-            return 'Maaf, terjadi kesalahan. Coba lagi ya.';
+            return 'Maaf, terjadi kesalahan. Silakan coba lagi.';
         }
 
-        return $response->json('choices.0.message.content') ?? 'Maaf, aku gak bisa jawab sekarang.';
+        return $response->json('choices.0.message.content') ?? 'Maaf, saya tidak bisa menjawab sekarang.';
     }
 
     protected function buildSystemInstruction(array $context): string

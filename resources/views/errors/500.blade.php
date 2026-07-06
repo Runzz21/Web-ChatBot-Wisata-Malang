@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>500 — Server Error | LERENG</title>
-    @vite(['resources/css/app.css'])
-</head>
-<body class="bg-[#EDF1EA] min-h-screen flex items-center justify-center">
-    <div class="text-center px-4">
-        <p class="font-mono text-[8rem] font-semibold text-primary-800/10 leading-none">500</p>
-        <h1 class="text-2xl font-display font-semibold text-primary-800 mt-4">Ana Masalah</h1>
-        <p class="text-[#5A6B55] mt-2 max-w-md mx-auto">Wah, ana kesalahan teknis. Tim kami lagi ndandani.</p>
-        <div class="mt-8">
-            <a href="{{ route('home') }}" class="inline-flex items-center px-6 py-3 bg-primary-700 text-white font-semibold rounded-xl hover:bg-primary-800 transition-colors shadow-lereng-sm hover:shadow-lereng-md">
-                Bali menyang Beranda
-            </a>
-        </div>
+@extends('layouts.main')
+
+@section('title', '500 - Kesalahan Server')
+
+@section('content')
+<section class="min-h-screen flex items-center justify-center px-4" style="padding-top: 6rem;">
+    <div class="text-center max-w-md">
+        <p class="text-8xl sm:text-9xl font-display font-bold text-leaf-600/20">500</p>
+        <h1 class="text-2xl font-display font-bold text-ink mt-4">Kesalahan Server</h1>
+        <p class="text-ink/50 mt-2">Maaf, terjadi kesalahan pada server. Silakan coba beberapa saat lagi.</p>
+        <a href="{{ route('home') }}" class="btn-primary mt-8 inline-flex">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            Kembali ke Beranda
+        </a>
     </div>
-</body>
-</html>
+</section>
+@endsection
