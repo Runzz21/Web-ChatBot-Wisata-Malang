@@ -138,7 +138,7 @@
                 <label for="foto_utama" class="block text-sm font-medium text-leaf-700 mb-1.5">Foto Utama</label>
                 @if($destinasi->foto_utama)
                     <div class="mb-3">
-                        <img src="{{ asset('storage/' . $destinasi->foto_utama) }}" alt="{{ $destinasi->nama }}"
+                        <img src="{{ $destinasi->foto_url }}" alt="{{ $destinasi->nama }}"
                              class="w-48 h-32 object-cover rounded-xl" style="border: 1px solid rgba(14, 29, 24, 0.06);">
                     </div>
                 @endif
