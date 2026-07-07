@@ -12,6 +12,7 @@ use App\Services\DestinasiService;
 use App\Services\GaleriService;
 use App\Services\GeminiService;
 use App\Services\KategoriService;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 
@@ -35,5 +36,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useTailwind();
+
+        if (config('app.env') !== 'local') {
+            URL::forceScheme('https');
+        }
     }
 }
