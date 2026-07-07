@@ -7,9 +7,10 @@
 <style>
     .chat-messages {
         scrollbar-width: thin;
-        scrollbar-color: rgba(14, 29, 24, 0.15) transparent;
+        scrollbar-color: rgba(14, 29, 18, 0.15) transparent;
         height: calc(100vh - 360px);
         min-height: 450px;
+        scroll-behavior: smooth;
     }
     .chat-messages::-webkit-scrollbar { width: 4px; }
     .chat-messages::-webkit-scrollbar-track { background: transparent; }
@@ -131,7 +132,12 @@
 
             scrollToBottom() {
                 const container = this.$refs.messages;
-                if (container) container.scrollTop = container.scrollHeight;
+                if (!container) return;
+                const threshold = 100;
+                const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < threshold;
+                if (isNearBottom) {
+                    container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+                }
             },
 
             sendQuick(text) {

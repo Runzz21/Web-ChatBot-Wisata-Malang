@@ -3,11 +3,8 @@
      class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-18 items-center">
-            <a href="{{ route('home') }}" class="flex items-center space-x-3 group">
-                <div class="w-10 h-10 rounded-xl bg-leaf-600/10 flex items-center justify-center transition-all duration-300 group-hover:bg-leaf-600/20 group-hover:scale-105">
-                    <svg class="w-5 h-5 text-leaf-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                </div>
-                <span class="font-display font-bold text-xl text-ink tracking-tight">Wisata<span class="text-gold-500">Malang</span></span>
+            <a href="{{ route('home') }}" class="flex items-center group">
+                <img src="{{ asset('images/logo.png') }}" alt="WisataMalang" class="h-10 w-auto transition-transform duration-300 group-hover:scale-105">
             </a>
 
             <div class="hidden md:flex md:items-center md:space-x-1">

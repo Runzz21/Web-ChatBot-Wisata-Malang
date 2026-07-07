@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Dashboard') | Wisata Malang Admin</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232D4A3E'/%3E%3Cstop offset='100%25' stop-color='%230E1D18'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Cpath d='M30 75 L50 25 L70 75 L50 60 Z' fill='%23C9A84C'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
@@ -18,9 +18,7 @@
 
             <div class="relative z-10 px-5 pt-5 pb-4 border-b border-white/5">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-3 group">
-                    <div class="w-9 h-9 rounded-lg bg-gold-500/15 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                        <svg class="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                    </div>
+                    <img src="{{ asset('images/logo.png') }}" alt="WisataMalang" class="h-8 w-auto brightness-0 invert opacity-90 transition-transform duration-300 group-hover:scale-105">
                     <div>
                         <p class="font-display font-semibold text-white text-base tracking-tight">Wisata<span class="text-gold-500">Malang</span></p>
                         <p class="text-[0.6875rem] text-white/40 font-mono tracking-widest uppercase">Admin Panel</p>
@@ -79,10 +77,7 @@
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                     </button>
                     <div class="flex items-center space-x-2">
-                        <div class="w-6 h-6 rounded bg-gold-500/15 flex items-center justify-center">
-                            <svg class="w-3.5 h-3.5 text-gold-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                        </div>
-                        <span class="font-display font-semibold text-leaf-700 tracking-tight">Wisata<span class="text-gold-500">Malang</span></span>
+                        <img src="{{ asset('images/logo.png') }}" alt="WisataMalang" class="h-6 w-auto">
                     </div>
                     <div class="w-6"></div>
                 </div>

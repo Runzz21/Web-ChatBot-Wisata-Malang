@@ -387,6 +387,14 @@
             </div>
         </div>
     </section>
+    {{-- Floating Chatbot Button (Mobile Only) --}}
+    <a href="{{ route('chatbot.index') }}"
+       class="md:hidden fixed bottom-6 left-6 z-50 w-14 h-14 rounded-2xl bg-leaf-600 text-white flex items-center justify-center shadow-lg shadow-leaf-600/30 hover:bg-leaf-700 active:scale-95 transition-all duration-300">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+        </svg>
+    </a>
+
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {

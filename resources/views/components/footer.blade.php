@@ -5,11 +5,8 @@
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-16">
             <div class="md:col-span-4">
-                <div class="flex items-center space-x-3 mb-4">
-                    <div class="w-10 h-10 rounded-xl bg-gold-500/15 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-gold-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                    </div>
-                    <span class="font-display font-bold text-xl text-white">Wisata<span class="text-gold-500">Malang</span></span>
+                <div class="mb-4">
+                    <img src="{{ asset('images/logo.png') }}" alt="WisataMalang" class="h-10 w-auto brightness-0 invert opacity-90">
                 </div>
                 <p class="text-white/40 text-sm leading-relaxed max-w-sm">
                     Platform informasi wisata alam terbaik di Malang Raya. Temukan dan jelajahi keindahan alam Malang bersama kami.
